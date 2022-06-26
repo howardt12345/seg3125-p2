@@ -53,7 +53,11 @@ export enum Sorting {
 
 const getPhotoPath = () => `${process.cwd()}/public${photosDir}`;
 
-export const getPhotoTileData = (category?: string, sorting?: Sorting) => {
+export const getPhotoTileData = (
+  category?: string,
+  sorting?: Sorting,
+  ids?: string[]
+) => {
   const photoPath = getPhotoPath();
 
   let photos = fs
@@ -101,6 +105,10 @@ export const getPhotoTileData = (category?: string, sorting?: Sorting) => {
         photos.sort((a, b) => a.photographer.localeCompare(b.photographer));
         break;
     }
+  }
+
+  if (ids) {
+    photos = photos.filter((photo) => ids.includes(photo.id));
   }
 
   return photos;
