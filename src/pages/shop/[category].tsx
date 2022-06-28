@@ -1,7 +1,7 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
 import { getPhotoTileData } from "@lib/photo-data";
 import Shop from "@components/shop/shop";
-import { categories } from "@lib/categories";
+import { categories } from "@lib/shop-consts";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export const getStaticProps = async ({
@@ -9,7 +9,7 @@ export const getStaticProps = async ({
   locale,
 }: {
   params: any;
-  locale: any;
+  locale: string;
 }) => {
   const photos = getPhotoTileData(params?.category as string);
   return {

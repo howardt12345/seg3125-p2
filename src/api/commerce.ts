@@ -1,13 +1,9 @@
+import { Size } from "@lib/product-consts";
+
 export interface ICartItem {
   id: string;
   quantity: number;
   size: Size;
-}
-
-export enum Size {
-  SM = "SM",
-  MD = "MD",
-  LG = "LG",
 }
 
 export class CartAPI {
