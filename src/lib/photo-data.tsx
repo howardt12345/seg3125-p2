@@ -5,22 +5,6 @@ import html from "remark-html";
 
 export const photosDir = "/content/photos";
 
-export const categories = [
-  "abstract",
-  "architecture",
-  "black-and-white",
-  "food",
-  "landscapes",
-  "macro",
-  "nature",
-  "night",
-  "portraits",
-  "product",
-  "sport",
-  "street",
-  "wedding",
-];
-
 export interface IPhotoTile {
   id: string;
   name: string;
