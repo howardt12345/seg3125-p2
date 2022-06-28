@@ -9,8 +9,8 @@ export const NavbarComponent = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="shop">Shop</Nav.Link>
-            <Nav.Link href="cart">{CartAPI.getInstance().getCount()}</Nav.Link>
+            <Nav.Link href="/shop">Shop</Nav.Link>
+            <Nav.Link href="cart">{`Cart: ${CartAPI.getInstance().getCount()}`}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

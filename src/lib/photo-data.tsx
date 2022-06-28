@@ -73,7 +73,7 @@ export const getPhotoTileData = (
         name: data.name,
         photographer: data.photographer,
         category: data.category,
-        src: `${photosDir}/${slug}.jpg`,
+        src: data.src,
         price: data.price,
         rating: data.rating,
       };
@@ -141,7 +141,7 @@ export const getPhotoData = async (id: string) => {
     name: data.name,
     photographer: data.photographer,
     category: data.category,
-    src: `${photosDir}/${id}.jpg`,
+    src: data.src,
     price: data.price,
     rating: data.rating,
     available: data.available,
