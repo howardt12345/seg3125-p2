@@ -1,0 +1,18 @@
+{
+  "categories": {
+    "all": "All Photos",
+    "abstract": "Abstract",
+    "architecture": "Architecture",
+    "black-and-white": "Black and White",
+    "food": "Food",
+    "landscapes": "Landscapes",
+    "macro": "Macro",
+    "nature": "Nature",
+    "night": "Night",
+    "portraits": "Portraits",
+    "product": "Product",
+    "sport": "Sport",
+    "street": "Street",
+    "wedding": "Wedding"
+  }
+}
