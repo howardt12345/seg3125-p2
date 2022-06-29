@@ -16,7 +16,12 @@ export const PhotoTile = ({ photo }: { photo: IPhotoTile }) => {
                 <Card.Text>{photo.photographer}</Card.Text>
               </Col>
               <Col className="text-end ps-0">
-                <Card.Title>{"$" + photo.price}</Card.Title>
+                <Card.Title>
+                  {photo.price.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "CAD",
+                  })}
+                </Card.Title>
                 <StarRating rating={photo.rating} />
               </Col>
             </Row>

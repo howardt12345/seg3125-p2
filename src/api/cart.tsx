@@ -8,7 +8,9 @@ export interface ICartItem {
   itemPrice: number;
 }
 
-class Cart {
+export const TAX = 0.13;
+
+export class Cart {
   private items: ICartItem[] = [];
 
   constructor(items?: ICartItem[]) {
@@ -88,11 +90,23 @@ class Cart {
     return this.items.reduce((total, item) => total + item.quantity, 0);
   }
 
-  getTotal(): number {
+  getSubtotal(): number {
     return this.items.reduce(
       (total, item) => total + item.itemPrice * item.quantity,
       0
     );
+  }
+
+  getTax(): number {
+    return this.getSubtotal() * TAX;
+  }
+
+  getTotal(): number {
+    return this.getSubtotal() + this.getTax();
+  }
+
+  isEmpty(): boolean {
+    return this.items.length === 0;
   }
 }
 
@@ -107,7 +121,7 @@ const reducer = (
 ) => {
   if (lastAction === action) {
     return {
-      cart: state.cart
+      cart: state.cart,
     };
   }
   lastAction = action;

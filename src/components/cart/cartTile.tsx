@@ -26,7 +26,7 @@ export const CartTile = ({
   };
 
   return (
-    <Card>
+    <Card className="mb-3">
       <Card.Body>
         <Row>
           <Col xs={3} xl={2} className="d-flex align-content-center">
@@ -89,7 +89,12 @@ export const CartTile = ({
                   className="d-flex align-content-center justify-content-end"
                 >
                   <Card.Title>
-                    {item.quantity + "x $" + photo?.price}
+                    {item.quantity +
+                      "x " +
+                      photo?.price.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "CAD",
+                      })}
                   </Card.Title>
                 </Col>
               </Row>

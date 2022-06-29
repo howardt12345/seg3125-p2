@@ -1,4 +1,4 @@
-import Cart from "@components/cart/cart";
+import CartComponent from "@components/cart/cart";
 import { getPhotoTileData } from "@lib/photo-data";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
@@ -14,4 +14,4 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
 };
 
 
-export default Cart;
+export default CartComponent;

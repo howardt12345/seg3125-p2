@@ -40,7 +40,12 @@ export default function Product({ photo }: { photo: IPhotoData }) {
               <h1 className="display-3 fw-normal">{photo.name}</h1>
               <Row>
                 <Col>
-                  <h5 className="fw-normal">{"$" + photo.price}</h5>
+                  <h5 className="fw-normal">
+                    {photo.price.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "CAD",
+                    })}
+                  </h5>
                 </Col>
                 <Col className="text-end">
                   <StarRating rating={photo.rating} />
