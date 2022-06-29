@@ -2,12 +2,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import type { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";
 import { CartProvider } from "@api/cart";
+import { SSRProvider } from "react-bootstrap";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <CartProvider>
-      <Component {...pageProps} />
-    </CartProvider>
+    <SSRProvider>
+      <CartProvider>
+        <Component {...pageProps} />
+      </CartProvider>
+    </SSRProvider>
   );
 }
 

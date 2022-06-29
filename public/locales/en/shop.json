@@ -14,5 +14,15 @@
     "sport": "Sport",
     "street": "Street",
     "wedding": "Wedding"
+  },
+  "sorting": {
+    "price_asc": "Price: low to high",
+    "price_desc": "Price: high to low",
+    "rating_asc": "Rating: low to high",
+    "rating_desc": "Rating: high to low",
+    "name_asc": "Name: A to Z",
+    "name_desc": "Name: Z to A",
+    "photographer_asc": "Photographer: A to Z",
+    "photographer_desc": "Photographer: Z to A"
   }
 }

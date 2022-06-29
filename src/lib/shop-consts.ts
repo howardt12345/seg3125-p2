@@ -15,9 +15,12 @@ export const categories = [
 ];
 
 export enum Sorting {
-  PRICE_ASC = "price_asc",
-  PRICE_DESC = "price_desc",
-  RATING = "rating_asc",
-  NAME = "name_asc",
-  PHOTOGRAPHER = "photographer_asc",
+  price_asc = "price_asc",
+  price_desc = "price_desc",
+  rating_asc = "rating_asc",
+  rating_desc = "rating_desc",
+  name_asc = "name_asc",
+  name_desc = "name_desc",
+  photographer_asc = "photographer_asc",
+  photographer_desc = "photographer_desc",
 }
