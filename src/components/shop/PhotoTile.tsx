@@ -5,17 +5,17 @@ import { Card, Col, Row } from "react-bootstrap";
 
 export const PhotoTile = ({ photo }: { photo: IPhotoTile }) => {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card>
       <Link href={`/product/${photo.id}`}>
         <a className="text-decoration-none text-reset">
           <Card.Img variant="top" src={photo.src + "/200/200"} />
           <Card.Body>
             <Row>
-              <Col>
+              <Col className="pe-0">
                 <Card.Title>{photo.name}</Card.Title>
                 <Card.Text>{photo.photographer}</Card.Text>
               </Col>
-              <Col className="text-end">
+              <Col className="text-end ps-0">
                 <Card.Title>{"$" + photo.price}</Card.Title>
                 <StarRating rating={photo.rating} />
               </Col>

@@ -11,7 +11,7 @@ const initialState = {
   cart: [] as ICartItem[],
 };
 
-export const reducer = (
+const reducer = (
   state: { cart: ICartItem[] },
   action: { type: any; payload: any }
 ) => {

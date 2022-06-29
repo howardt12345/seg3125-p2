@@ -1,4 +1,3 @@
-
 export const categories = [
   "abstract",
   "architecture",
@@ -14,3 +13,11 @@ export const categories = [
   "street",
   "wedding",
 ];
+
+export enum Sorting {
+  PRICE_ASC = "price_asc",
+  PRICE_DESC = "price_desc",
+  RATING = "rating_asc",
+  NAME = "name_asc",
+  PHOTOGRAPHER = "photographer_asc",
+}

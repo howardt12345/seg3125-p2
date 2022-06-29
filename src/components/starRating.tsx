@@ -10,6 +10,7 @@ export const StarRating = ({ rating }: { rating: number }) => {
           icon={FaStarSolid}
           key={"star-" + index}
           aria-hidden="true"
+          color="orange"
         ></FontAwesomeIcon>
       ))}
       {Array.from(Array(5 - rating)).map((_, index) => (
@@ -17,6 +18,7 @@ export const StarRating = ({ rating }: { rating: number }) => {
           icon={FaStarEmpty}
           key={"star-outline-" + index}
           aria-hidden="true"
+          color="orange"
         ></FontAwesomeIcon>
       ))}
     </div>

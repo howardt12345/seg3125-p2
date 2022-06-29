@@ -2,6 +2,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import { Sorting } from "./shop-consts";
 
 export const photosDir = "/content/photos";
 
@@ -27,21 +28,9 @@ export interface IPhotoData {
   description: string;
 }
 
-export enum Sorting {
-  PRICE_ASC = "price_asc",
-  PRICE_DESC = "price_desc",
-  RATING = "rating_asc",
-  NAME = "name_asc",
-  PHOTOGRAPHER = "photographer_asc",
-}
-
 const getPhotoPath = () => `${process.cwd()}/public${photosDir}`;
 
-export const getPhotoTileData = (
-  category?: string,
-  sorting?: Sorting,
-  ids?: string[]
-) => {
+export const getPhotoTileData = (category?: string, ids?: string[]) => {
   const photoPath = getPhotoPath();
 
   let photos = fs
@@ -69,26 +58,6 @@ export const getPhotoTileData = (
     photos = photos.filter(
       (photo) => photo.category.toLowerCase() === category.toLowerCase()
     );
-  }
-
-  if (sorting) {
-    switch (sorting) {
-      case Sorting.PRICE_ASC:
-        photos.sort((a, b) => a.price - b.price);
-        break;
-      case Sorting.PRICE_DESC:
-        photos.sort((a, b) => b.price - a.price);
-        break;
-      case Sorting.RATING:
-        photos.sort((a, b) => a.rating - b.rating);
-        break;
-      case Sorting.NAME:
-        photos.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case Sorting.PHOTOGRAPHER:
-        photos.sort((a, b) => a.photographer.localeCompare(b.photographer));
-        break;
-    }
   }
 
   if (ids) {

@@ -1,4 +1,4 @@
-import Product from "@components/product";
+import Product from "@components/product/product";
 import { getPhotoData, getPhotoIds } from "@lib/photo-data";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
