@@ -46,10 +46,8 @@ export default function Product({ photo }: { photo: IPhotoData }) {
                   <StarRating rating={photo.rating} />
                 </Col>
               </Row>
-              <ProductForm id={photo.id} />
-              <div
-                dangerouslySetInnerHTML={{ __html: photo.description }}
-              />
+              <ProductForm id={photo.id} itemPrice={photo.price} />
+              <div dangerouslySetInnerHTML={{ __html: photo.description }} />
             </Col>
           </Row>
         </Container>

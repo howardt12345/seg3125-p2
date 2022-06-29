@@ -13,7 +13,7 @@ export const NavbarComponent = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link href="/shop">Shop</Nav.Link>
-            <Nav.Link href="cart">{`Cart: ${state?.cart?.length}`}</Nav.Link>
+            <Nav.Link href="cart">{`Cart: ${state?.cart.getItemCount()}`}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

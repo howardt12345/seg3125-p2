@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 
 
-export const ProductForm = ({ id }: { id: string }) => {
+export const ProductForm = ({ id, itemPrice }: { id: string, itemPrice: number }) => {
   const { dispatch } = useContext(CartContext);
 
   const { t } = useTranslation("product");
@@ -34,6 +34,7 @@ export const ProductForm = ({ id }: { id: string }) => {
       id: id,
       size: size,
       quantity: quantity,
+      itemPrice: itemPrice,
     } as ICartItem;
 
     dispatch({ type: "add", payload: item });
