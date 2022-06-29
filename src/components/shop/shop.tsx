@@ -1,8 +1,7 @@
-import { CartAPI } from "@api/commerce";
+import { NavbarComponent } from "@components/Navbar";
 import { IPhotoTile } from "@lib/photo-data";
 import { useRouter } from "next/router";
 import { Container } from "react-bootstrap";
-import { NavbarComponent } from "../Navbar";
 import { CategoryList } from "./categoryList";
 import { PhotoTile } from "./PhotoTile";
 import { ShopHeader } from "./ShopHeader";

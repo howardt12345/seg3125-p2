@@ -1,10 +1,10 @@
-import { CartAPI, ICartItem } from "@api/commerce";
+import { CartContext, ICartItem } from "@api/cart";
 import { IPhotoData } from "@lib/photo-data";
 import { Size } from "@lib/product-consts";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { Breadcrumbs } from "./breadcrumb";
 import { NavbarComponent } from "./Navbar";
@@ -55,6 +55,8 @@ export default function Product({ photo }: { photo: IPhotoData }) {
 }
 
 const ProductForm = ({ id }: { id: string }) => {
+  const { state, dispatch } = useContext(CartContext);
+
   const { t } = useTranslation("product");
 
   const [size, setSize] = useState<Size>();
@@ -64,7 +66,7 @@ const ProductForm = ({ id }: { id: string }) => {
 
   const submit = (event: any) => {
     event.preventDefault();
-    
+
     const form = event.currentTarget;
     if (form.checkValidity() === false || !size) {
       event.stopPropagation();
@@ -82,7 +84,8 @@ const ProductForm = ({ id }: { id: string }) => {
       size: size,
       quantity: quantity,
     } as ICartItem;
-    CartAPI.getInstance().addToCart(item);
+
+    dispatch({ type: "add", payload: item });
   };
 
   return (
@@ -107,8 +110,9 @@ const ProductForm = ({ id }: { id: string }) => {
         </Form.Group>
 
         <InputGroup>
-          <Button onClick={() => setQuantity(quantity - 1)}>Subtract</Button>
+          <Button onClick={() => setQuantity(quantity - 1)}>-</Button>
           <Form.Control
+            className="text-center"
             type="number"
             aria-label={t("quantity")}
             value={quantity}
@@ -116,7 +120,7 @@ const ProductForm = ({ id }: { id: string }) => {
             min={1}
             required
           />
-          <Button onClick={() => setQuantity(quantity + 1)}>Add</Button>
+          <Button onClick={() => setQuantity(quantity + 1)}>+</Button>
         </InputGroup>
 
         <Button variant="primary" type="submit">
