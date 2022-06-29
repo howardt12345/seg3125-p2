@@ -55,7 +55,7 @@ export const PhotoGrid = ({ photos }: { photos: IPhotoTile[] }) => {
     <>
       <Navbar bg="light" className="border-top border-bottom px-3">
         <Navbar.Text>
-          {`${photos.length} photo${photos.length !== 1 ? "s" : ""}`}
+          {`${photos?.length} photo${photos?.length !== 1 ? "s" : ""}`}
         </Navbar.Text>
         <Nav className="ms-auto">
           <Nav.Item>
