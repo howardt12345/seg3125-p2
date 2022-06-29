@@ -4,8 +4,13 @@ import { useTranslation } from "next-i18next";
 import { useContext, useState } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 
-
-export const ProductForm = ({ id, itemPrice }: { id: string, itemPrice: number }) => {
+export const ProductForm = ({
+  id,
+  itemPrice,
+}: {
+  id: string;
+  itemPrice: number;
+}) => {
   const { dispatch } = useContext(CartContext);
 
   const { t } = useTranslation("product");

@@ -13,5 +13,4 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
   };
 };
 
-
 export default CartComponent;
