@@ -9,65 +9,90 @@ export interface ICartItem {
 }
 
 class Cart {
-  private items: Map<string, ICartItem>;
+  private items: ICartItem[] = [];
 
-  constructor() {
-    this.items = new Map();
+  constructor(items?: ICartItem[]) {
+    this.items = items || [];
   }
 
   addItem(item: ICartItem) {
-    const existingItem = this.items.get(item.id);
+    const existingItem = this.items.find(
+      (i) => i.id === item.id && i.size === item.size
+    );
     if (existingItem) {
       existingItem.quantity += item.quantity;
     } else {
-      this.items.set(item.id, item);
+      this.items.push(item);
     }
-    return this;
   }
 
   removeItem(item: ICartItem) {
-    const existingItem = this.items.get(item.id);
+    const existingItem = this.items.find(
+      (i) => i.id === item.id && i.size === item.size
+    );
     if (existingItem) {
       existingItem.quantity -= item.quantity;
-      if (existingItem.quantity === 0) {
-        this.items.delete(item.id);
+      if (existingItem.quantity <= 0) {
+        this.items.splice(this.items.indexOf(existingItem), 1);
       }
     }
-    return this;
-  }
-
-  withNewItem(item: ICartItem) {
-    const cart = new Cart();
-    cart.items = this.items;
-    cart.addItem(item);
-    return cart;
-  }
-
-  withRemovedItem(item: ICartItem) {
-    const cart = new Cart();
-    cart.items = this.items;
-    cart.removeItem(item);
-    return cart;
   }
 
   deleteItem(item: ICartItem) {
-    this.items.delete(item.id);
+    const existingItem = this.items.find(
+      (i) => i.id === item.id && i.size === item.size
+    );
+    if (existingItem) {
+      this.items.splice(this.items.indexOf(existingItem), 1);
+    }
   }
 
-  getItems() {
-    return [...this.items.values()];
+  setQuantity(item: ICartItem, quantity: number) {
+    const existingItem = this.items.find(
+      (i) => i.id === item.id && i.size === item.size
+    );
+    if (existingItem) {
+      existingItem.quantity = quantity;
+    }
   }
 
-  getTotal() {
-    return this.getItems().reduce((total, item) => {
-      return total + item.itemPrice * item.quantity;
-    }, 0);
+  withNewItem(item: ICartItem) {
+    const newCart = new Cart(this.items);
+    newCart.addItem(item);
+    return newCart;
+  }
+
+  withRemovedItem(item: ICartItem) {
+    const newCart = new Cart(this.items);
+    newCart.removeItem(item);
+    return newCart;
+  }
+
+  withDeletedItem(item: ICartItem) {
+    const newCart = new Cart(this.items);
+    newCart.deleteItem(item);
+    return newCart;
+  }
+
+  withSetQuantity(item: ICartItem, quantity: number) {
+    const newCart = new Cart(this.items);
+    newCart.setQuantity(item, quantity);
+    return newCart;
+  }
+
+  getItems(): ICartItem[] {
+    return this.items;
   }
 
   getItemCount() {
-    return this.getItems().reduce((total, item) => {
-      return total + item.quantity;
-    }, 0);
+    return this.items.reduce((total, item) => total + item.quantity, 0);
+  }
+
+  getTotal(): number {
+    return this.items.reduce(
+      (total, item) => total + item.itemPrice * item.quantity,
+      0
+    );
   }
 }
 
@@ -75,19 +100,40 @@ const initialState = {
   cart: new Cart(),
 };
 
+let lastAction = { type: "", payload: {} };
 const reducer = (
   state: { cart: Cart },
-  action: { type: any; payload: any }
+  action: { type: any; payload: ICartItem }
 ) => {
+  if (lastAction === action) {
+    return {
+      cart: state.cart
+    };
+  }
+  lastAction = action;
   switch (action.type) {
     case "add":
-      console.log("add", action.payload);
+      const newCart = state.cart.withNewItem(action.payload);
       return {
-        cart: state.cart.withNewItem(action.payload),
+        cart: newCart,
       };
     case "remove":
+      const newCart2 = state.cart.withRemovedItem(action.payload);
       return {
-        cart: state.cart.withRemovedItem(action.payload),
+        cart: newCart2,
+      };
+    case "delete":
+      const newCart3 = state.cart.withDeletedItem(action.payload);
+      return {
+        cart: newCart3,
+      };
+    case "setQuantity":
+      const newCart4 = state.cart.withSetQuantity(
+        action.payload,
+        action.payload.quantity
+      );
+      return {
+        cart: newCart4,
       };
     default:
       return state;
@@ -96,7 +142,7 @@ const reducer = (
 
 export const CartContext = createContext({
   state: initialState,
-  dispatch: ({ type, payload }: { type: any; payload: any }) => {},
+  dispatch: ({ type, payload }: { type: any; payload: ICartItem }) => {},
 });
 
 export const CartProvider = ({ children }: { children: any }) => {

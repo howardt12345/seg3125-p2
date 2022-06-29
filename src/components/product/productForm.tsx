@@ -70,6 +70,7 @@ export const ProductForm = ({ id, itemPrice }: { id: string, itemPrice: number }
           <Button
             variant="outline-primary"
             onClick={() => setQuantity(quantity - 1)}
+            disabled={quantity === 1}
           >
             -
           </Button>

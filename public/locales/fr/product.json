@@ -4,5 +4,6 @@
     "SM": "Small (10cm x 15cm)",
     "MD": "Medium (20cm x 30cm)",
     "LG": "Large (30cm x 40cm)"
-  }
+  },
+  "quantity": "Quantity"
 }
