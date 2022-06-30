@@ -57,7 +57,10 @@ export const ProductForm = ({
           <Form.Select
             aria-label={t("select-print-size")}
             value={size}
-            onChange={(e) => setSize(Size[e.target.value as keyof typeof Size])}
+            onChange={(e) => {
+              setSize(Size[e.target.value as keyof typeof Size]);
+              setQuantity(1);
+            }}
             required
           >
             <option value="">{t("select-print-size")}</option>

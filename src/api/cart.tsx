@@ -82,6 +82,10 @@ export class Cart {
     return newCart;
   }
 
+  clear() {
+    this.items = [];
+  }
+
   getItems(): ICartItem[] {
     return this.items;
   }
@@ -107,6 +111,16 @@ export class Cart {
 
   isEmpty(): boolean {
     return this.items.length === 0;
+  }
+
+  getUniqueItems(): ICartItem[] {
+    return this.items.reduce((uniqueItems: ICartItem[], item) => {
+      const existingItem = uniqueItems.find((i) => i.id === item.id);
+      if (!existingItem) {
+        uniqueItems.push(item);
+      }
+      return uniqueItems;
+    }, []);
   }
 }
 
@@ -148,6 +162,11 @@ const reducer = (
       );
       return {
         cart: newCart4,
+      };
+    case "clear":
+      state.cart.clear();
+      return {
+        cart: new Cart(),
       };
     default:
       return state;

@@ -1,9 +1,14 @@
 import { Cart, TAX } from "@api/cart";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 
-export const CartInfo = ({ cart }: { cart: Cart }) => {
+export const CartInfo = (props: {
+  cart: Cart;
+  confirm?: boolean;
+  submit?: any;
+}) => {
+  const { cart, confirm, submit } = props;
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
@@ -12,12 +17,12 @@ export const CartInfo = ({ cart }: { cart: Cart }) => {
     setSubtotal(cart.getSubtotal());
     setTax(cart.getTax());
     setTotal(cart.getTotal());
-  }, [cart]);
+  }, [cart, props]);
 
   return (
     <Card>
       <Card.Body className="text-center">
-        <Card.Title>Order Summary</Card.Title>
+        <h3 className="card-title">Order Summary</h3>
         <div className="px-2 my-4">
           <Row>
             <Col className="text-start">
@@ -61,11 +66,23 @@ export const CartInfo = ({ cart }: { cart: Cart }) => {
             </Col>
           </Row>
         </div>
-        <Link href="/checkout">
-          <a className="btn btn-outline-primary btn-block">
-            Continue to Checkout
-          </a>
-        </Link>
+        {!confirm && (
+          <Link href="/checkout">
+            <a className="btn btn-outline-primary btn-block">
+              Continue to Checkout
+            </a>
+          </Link>
+        )}
+        {confirm && (
+          <Button
+            variant="outline-primary"
+            className="btn-block"
+            form="submit-form"
+            type="submit"
+          >
+            Confirm Order
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );

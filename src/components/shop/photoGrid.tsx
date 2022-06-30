@@ -81,7 +81,7 @@ export const PhotoGrid = ({ photos }: { photos: IPhotoTile[] }) => {
           </Nav.Item>
         </Nav>
       </Navbar>
-      <Row className="px-4 py-3">
+      <Row className="px-3 py-2">
         {sortedPhotos &&
           sortedPhotos.map((photo) => (
             <Col sm={6} lg={4} xxl={3} key={photo.id} className="p-1">

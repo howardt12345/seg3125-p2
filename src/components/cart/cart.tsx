@@ -36,7 +36,7 @@ export default function CartComponent({ photos }: { photos: IPhotoTile[] }) {
             )}
           </Col>
           <Col md={5} className="pt-3">
-            <CartInfo cart={cart} />
+            <CartInfo cart={state.cart} />
           </Col>
         </Row>
       </Container>
