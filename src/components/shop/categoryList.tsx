@@ -1,6 +1,7 @@
 import { categories } from "@lib/shop-consts";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
 
 export const CategoryList = ({
   selected,
@@ -13,18 +14,8 @@ export const CategoryList = ({
 
   return (
     <div className="category-list">
-      <ul className="list-unstyled">
-        <li>
-          <Link href="/shop">
-            <a
-              className={`text-decoration-none text-reset ${
-                selected === "all" ? "text-primary" : ""
-              }`}
-            >
-              {t("categories.all")}
-            </a>
-          </Link>
-        </li>
+      <h3 className="mt-2 px-3 fw-normal">Categories</h3>
+      <ListGroup variant="flush" as="ul">
         {categories &&
           categories.map((category) => (
             <CategoryItem
@@ -34,7 +25,7 @@ export const CategoryList = ({
               selected={selected}
             />
           ))}
-      </ul>
+      </ListGroup>
     </div>
   );
 };
@@ -51,21 +42,14 @@ const CategoryItem = ({
   const { t } = useTranslation("shop");
 
   return (
-    <li>
+    <ListGroup.Item as="li" active={selected === category} disabled={disabled}>
       <Link href={`/shop/${category}`}>
         <a
-          className={`text-decoration-none ${
-            selected === category
-              ? "text-reset text-decoration-underline"
-              : "text-muted"
-          }`}
-          style={{
-            opacity: disabled ? 0.5 : 1,
-          }}
+          className={`text-decoration-none text-reset`}
         >
           {t(`categories.${category}`)}
         </a>
       </Link>
-    </li>
+    </ListGroup.Item>
   );
 };
