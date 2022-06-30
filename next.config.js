@@ -5,8 +5,17 @@ const nextConfig = {
   reactStrictMode: true,
   i18n,
   images: {
-    domains: ['picsum.photos'],
+    domains: ["picsum.photos"],
   },
-}
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/shop",
+        permanent: true,
+      },
+    ];
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
