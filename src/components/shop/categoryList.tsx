@@ -14,7 +14,7 @@ export const CategoryList = ({
 
   return (
     <div className="category-list">
-      <h3 className="mt-2 mb-3 px-3 fw-normal">Categories</h3>
+      <h3 className="mt-2 mb-3 px-3 fw-normal">{t('categories_title')}</h3>
       <ListGroup variant="flush" as="ul">
         <ListGroup.Item
           as="li"

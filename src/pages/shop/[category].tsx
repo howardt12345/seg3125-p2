@@ -16,7 +16,7 @@ export const getStaticProps = async ({
     props: {
       photos,
       category: params?.category as string,
-      ...(await serverSideTranslations(locale, ["common", "shop"])),
+      ...(await serverSideTranslations(locale, ["common", "shop", "product"])),
     },
   };
 };

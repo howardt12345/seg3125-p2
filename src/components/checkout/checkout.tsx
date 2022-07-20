@@ -4,6 +4,7 @@ import { NavbarComponent } from "@components/Navbar";
 import { IPhotoTile } from "@lib/photo-data";
 import { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
+import CreditCardInput from "react-credit-card-input";
 
 import {
   Container,
@@ -39,6 +40,7 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
   const [cardCvv, setCardCvv] = useState("");
 
   const [show, setShow] = useState(false);
+  const [validated, setValidated] = useState(false);
 
   useEffect(() => {
     setCart(state.cart);
@@ -61,8 +63,18 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
       cardCvv,
     });
 
-    setShow(true);
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.stopPropagation();
+    } else {
+      setValidated(true);
+      handleOpen();
+    }
+
+    setValidated(true);
   };
+
+  const handleOpen = () => setShow(true);
 
   const handleClose = () => {
     setShow(false);
@@ -78,136 +90,146 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
         <Row>
           <Col lg={8} className="pt-3">
             <h3 className="mb-2">{t("delivery_info")}</h3>
-            <Form noValidate onSubmit={handleSubmit} id="submit-form">
+            <Form
+              noValidate
+              validated={validated}
+              onSubmit={handleSubmit}
+              id="submit-form"
+            >
               <Row className="mb-2">
                 <Col md={6}>
                   <Form.Group controlId="formFirstName">
                     <Form.Label>{t("first_name")}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder={t('enter_first_name')}
+                      placeholder={t("enter_first_name")}
                       value={firstName}
                       onChange={(e) => {
                         setFirstName(e.target.value);
                       }}
+                      required
                     />
                   </Form.Group>
                 </Col>
                 <Col md={6}>
                   <Form.Group controlId="formLastName">
-                    <Form.Label>{t('last_name')}</Form.Label>
+                    <Form.Label>{t("last_name")}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder={t('enter_last_name')}
+                      placeholder={t("enter_last_name")}
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
+                      required
                     />
                   </Form.Group>
                 </Col>
               </Row>
               <Form.Group controlId="formEmail" className="mb-2">
-                <Form.Label>{t('email')}</Form.Label>
+                <Form.Label>{t("email")}</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder={t('enter_email')}
+                  placeholder={t("enter_email")}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </Form.Group>
               <Form.Group controlId="formPhone" className="mb-2">
-                <Form.Label>{t('phone')}</Form.Label>
+                <Form.Label>{t("phone")}</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder={t('enter_phone')}
+                  placeholder={t("enter_phone")}
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  required
                 />
               </Form.Group>
               <Form.Group controlId="formAddress" className="mb-2">
-                <Form.Label>{t('address')}</Form.Label>
+                <Form.Label>{t("address")}</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder={t('enter_address')}
+                  placeholder={t("enter_address")}
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
+                  required
                 />
               </Form.Group>
               <Row className="mb-2">
                 <Col md={4}>
                   <Form.Group controlId="formCity">
-                    <Form.Label>{t('city')}</Form.Label>
+                    <Form.Label>{t("city")}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder={t('enter_city')}
+                      placeholder={t("enter_city")}
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
+                      required
                     />
                   </Form.Group>
                 </Col>
                 <Col md={4}>
                   <Form.Group controlId="formProvince">
-                    <Form.Label>{t('province_state')}</Form.Label>
+                    <Form.Label>{t("province_state")}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder={t('enter_province_state')}
+                      placeholder={t("enter_province_state")}
                       value={province}
                       onChange={(e) => setProvince(e.target.value)}
+                      required
                     />
                   </Form.Group>
                 </Col>
                 <Col md={4}>
                   <Form.Group controlId="formZip">
-                    <Form.Label>{t('zip_postal')}</Form.Label>
+                    <Form.Label>{t("zip_postal")}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder={t('enter_zip_postal')}
+                      placeholder={t("enter_zip_postal")}
                       value={postalCode}
                       onChange={(e) => setPostalCode(e.target.value)}
+                      required
                     />
                   </Form.Group>
                 </Col>
               </Row>
-              <h3 className="mb-2 mt-4 pt-4 border-top">{t('payment_info')}</h3>
-              <Form.Group controlId="formCardNumber" className="mb-2">
-                <Form.Label>{t('card_number')}</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder={t('enter_card_number')}
-                  value={cardNumber}
-                  onChange={(e) => setCardNumber(e.target.value)}
-                />
-              </Form.Group>
+              <h3 className="mb-2 mt-4 pt-4 border-top">{t("payment_info")}</h3>
+
               <Row className="mb-2">
                 <Col md={6}>
+                  <Form.Group
+                    controlId="creditCardInput"
+                    className="mb-2 d-flex flex-column"
+                  >
+                    <Form.Label>{t("card_name")}</Form.Label>
+                    <CreditCardInput
+                      customTextLabels={{
+                        invalidCardNumber: t("invalid_card_number"),
+                        expiryError: {
+                          invalidExpiryDate: t("invalid_expiration_date"),
+                          monthOutOfRange: t("month_out_of_range"),
+                          yearOutOfRange: t("year_out_of_range"),
+                          dateOutOfRange: t("date_out_of_range"),
+                        },
+                        invalidCvc: t("invalid_cvv"),
+                        cardNumberPlaceholder: t("card_number_placeholder"),
+                        expiryPlaceholder: t("expiry_placeholder"),
+                        cvcPlaceholder: t("cvv_placeholder"),
+                      }}
+                      fieldStyle={{
+                        border: "1px solid #ced4da",
+                      }}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={6}>
                   <Form.Group controlId="formCardName">
-                    <Form.Label>{t('card_name')}</Form.Label>
+                    <Form.Label>{t("card_name")}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder={t('enter_card_name')}
+                      placeholder={t("enter_card_name")}
                       value={cardName}
                       onChange={(e) => setCardName(e.target.value)}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col md={3}>
-                  <Form.Group controlId="formCardExpiration" className="mb-2">
-                    <Form.Label>{t('expiration_date')}</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="MM/YY"
-                      value={cardExpiry}
-                      onChange={(e) => setCardExpiry(e.target.value)}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col md={3}>
-                  <Form.Group controlId="formCardCvv" className="mb-2">
-                    <Form.Label>{t('cvv')}</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder={t('enter_cvv')}
-                      value={cardCvv}
-                      onChange={(e) => setCardCvv(e.target.value)}
+                      required
                     />
                   </Form.Group>
                 </Col>
@@ -255,11 +277,11 @@ const CartPreview = ({
     <>
       <Row>
         <Col>
-          <h5 className="mb-2">{t('your_order')}</h5>
+          <h5 className="mb-2">{t("your_order")}</h5>
         </Col>
         <Col className="text-end">
           <Link href="/cart">
-            <a className="text-muted">{t('edit')}</a>
+            <a className="text-muted">{t("edit")}</a>
           </Link>
         </Col>
       </Row>

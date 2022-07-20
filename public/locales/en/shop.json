@@ -1,5 +1,6 @@
 {
   "shop": "Shop",
+  "categories_title": "Categories",
   "categories": {
     "all": "All Photos",
     "abstract": "Abstract",
