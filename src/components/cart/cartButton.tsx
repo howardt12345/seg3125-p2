@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "next-i18next";
 
 export const CartButton = ({ count }: { count: number }) => {
-  const { t } = useTranslation("shop");
+  const { t } = useTranslation();
   return (
     <div className="cart-button position-relative">
       <Link href="/cart">

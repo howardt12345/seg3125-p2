@@ -16,11 +16,13 @@ import {
 } from "react-bootstrap";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
   const [cart, setCart] = useState<Cart>(new Cart());
   const { state, dispatch } = useContext(CartContext);
   const router = useRouter();
+  const { t } = useTranslation("checkout");
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -72,18 +74,18 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
     <div>
       <NavbarComponent />
       <Container fluid="lg">
-        <h1 className="display-5 mt-2 pb-3 border-bottom">Checkout</h1>
+        <h1 className="display-5 mt-2 pb-3 border-bottom">{t("checkout")}</h1>
         <Row>
           <Col lg={8} className="pt-3">
-            <h3 className="mb-2">Delivery Information</h3>
+            <h3 className="mb-2">{t("delivery_info")}</h3>
             <Form noValidate onSubmit={handleSubmit} id="submit-form">
               <Row className="mb-2">
                 <Col md={6}>
                   <Form.Group controlId="formFirstName">
-                    <Form.Label>First name</Form.Label>
+                    <Form.Label>{t("first_name")}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Enter first name"
+                      placeholder={t('enter_first_name')}
                       value={firstName}
                       onChange={(e) => {
                         setFirstName(e.target.value);
@@ -93,10 +95,10 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                 </Col>
                 <Col md={6}>
                   <Form.Group controlId="formLastName">
-                    <Form.Label>Last name</Form.Label>
+                    <Form.Label>{t('last_name')}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Enter last name"
+                      placeholder={t('enter_last_name')}
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
                     />
@@ -104,73 +106,73 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                 </Col>
               </Row>
               <Form.Group controlId="formEmail" className="mb-2">
-                <Form.Label>Email</Form.Label>
+                <Form.Label>{t('email')}</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Enter email"
+                  placeholder={t('enter_email')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Form.Group>
               <Form.Group controlId="formPhone" className="mb-2">
-                <Form.Label>Phone</Form.Label>
+                <Form.Label>{t('phone')}</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter phone"
+                  placeholder={t('enter_phone')}
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </Form.Group>
               <Form.Group controlId="formAddress" className="mb-2">
-                <Form.Label>Address</Form.Label>
+                <Form.Label>{t('address')}</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter address"
+                  placeholder={t('enter_address')}
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                 />
               </Form.Group>
               <Row className="mb-2">
-                <Col md={6}>
+                <Col md={4}>
                   <Form.Group controlId="formCity">
-                    <Form.Label>City</Form.Label>
+                    <Form.Label>{t('city')}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Enter city"
+                      placeholder={t('enter_city')}
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
                     />
                   </Form.Group>
                 </Col>
-                <Col md={3}>
+                <Col md={4}>
                   <Form.Group controlId="formProvince">
-                    <Form.Label>Province/State</Form.Label>
+                    <Form.Label>{t('province_state')}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Enter province/state"
+                      placeholder={t('enter_province_state')}
                       value={province}
                       onChange={(e) => setProvince(e.target.value)}
                     />
                   </Form.Group>
                 </Col>
-                <Col md={3}>
+                <Col md={4}>
                   <Form.Group controlId="formZip">
-                    <Form.Label>Zip/Postal</Form.Label>
+                    <Form.Label>{t('zip_postal')}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Enter zip/postal"
+                      placeholder={t('enter_zip_postal')}
                       value={postalCode}
                       onChange={(e) => setPostalCode(e.target.value)}
                     />
                   </Form.Group>
                 </Col>
               </Row>
-              <h3 className="mb-2 mt-4 pt-2 border-top">Payment Information</h3>
+              <h3 className="mb-2 mt-4 pt-4 border-top">{t('payment_info')}</h3>
               <Form.Group controlId="formCardNumber" className="mb-2">
-                <Form.Label>Card number</Form.Label>
+                <Form.Label>{t('card_number')}</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter card number"
+                  placeholder={t('enter_card_number')}
                   value={cardNumber}
                   onChange={(e) => setCardNumber(e.target.value)}
                 />
@@ -178,10 +180,10 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
               <Row className="mb-2">
                 <Col md={6}>
                   <Form.Group controlId="formCardName">
-                    <Form.Label>Card name</Form.Label>
+                    <Form.Label>{t('card_name')}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Enter card name"
+                      placeholder={t('enter_card_name')}
                       value={cardName}
                       onChange={(e) => setCardName(e.target.value)}
                     />
@@ -189,7 +191,7 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                 </Col>
                 <Col md={3}>
                   <Form.Group controlId="formCardExpiration" className="mb-2">
-                    <Form.Label>Card expiration</Form.Label>
+                    <Form.Label>{t('expiration_date')}</Form.Label>
                     <Form.Control
                       type="text"
                       placeholder="MM/YY"
@@ -200,10 +202,10 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                 </Col>
                 <Col md={3}>
                   <Form.Group controlId="formCardCvv" className="mb-2">
-                    <Form.Label>Card cvv</Form.Label>
+                    <Form.Label>{t('cvv')}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Enter card cvv"
+                      placeholder={t('enter_cvv')}
                       value={cardCvv}
                       onChange={(e) => setCardCvv(e.target.value)}
                     />
@@ -247,15 +249,17 @@ const CartPreview = ({
   cart: Cart;
   photos: IPhotoTile[];
 }) => {
+  const { t } = useTranslation("checkout");
+
   return (
     <>
       <Row>
         <Col>
-          <h5 className="mb-2">Your order</h5>
+          <h5 className="mb-2">{t('your_order')}</h5>
         </Col>
         <Col className="text-end">
           <Link href="/cart">
-            <a className="text-muted">Edit</a>
+            <a className="text-muted">{t('edit')}</a>
           </Link>
         </Col>
       </Row>

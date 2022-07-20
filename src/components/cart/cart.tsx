@@ -9,7 +9,7 @@ import { CartInfo } from "./cartInfo";
 import { CartTile } from "./cartTile";
 
 export default function CartComponent({ photos }: { photos: IPhotoTile[] }) {
-  const { t } = useTranslation(["cart", "shop"]);
+  const { t } = useTranslation(["common", "cart", "shop"]);
   const [cart, setCart] = useState<Cart>(new Cart());
   const { state } = useContext(CartContext);
 
@@ -21,7 +21,7 @@ export default function CartComponent({ photos }: { photos: IPhotoTile[] }) {
     <div>
       <NavbarComponent />
       <Container fluid="lg">
-        <h1 className="display-3 mt-5 pb-3 border-bottom">{t("shop:cart")}</h1>
+        <h1 className="display-3 mt-5 pb-3 border-bottom">{t("cart")}</h1>
         <Row>
           <Col md={7} className="pt-3">
             {!cart.isEmpty() ? (
@@ -36,7 +36,7 @@ export default function CartComponent({ photos }: { photos: IPhotoTile[] }) {
                 ))
             ) : (
               <Row className="text-center">
-                <span>{t("cart_empty")}</span>
+                <span>{t("cart:cart_empty")}</span>
                 <Col className="mt-4">
                   <Link href="/shop">
                     <a className="btn btn-outline-primary">{t("shop:shop")}</a>
