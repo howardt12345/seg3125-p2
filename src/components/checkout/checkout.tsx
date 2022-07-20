@@ -195,7 +195,7 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
               <h3 className="mb-2 mt-4 pt-4 border-top">{t("payment_info")}</h3>
 
               <Row className="mb-2">
-                <Col md={6}>
+                <Col md={6} xl={5}>
                   <Form.Group
                     controlId="creditCardInput"
                     className="mb-2 d-flex flex-column"
@@ -218,10 +218,11 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                       fieldStyle={{
                         border: "1px solid #ced4da",
                       }}
+                      required
                     />
                   </Form.Group>
                 </Col>
-                <Col md={6}>
+                <Col md={6} xl={7}>
                   <Form.Group controlId="formCardName">
                     <Form.Label>{t("card_name")}</Form.Label>
                     <Form.Control
@@ -246,17 +247,14 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
       </Container>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Thank you for ordering!</Modal.Title>
+          <Modal.Title>{t("thank_you_for_ordering")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>
-            Your receipt has been sent to your email. You can check the link
-            attached to the email to check your delivery progress.
-          </p>
+          <p>{t("receipt_notice")}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="outline-primary" onClick={handleClose}>
-            Close
+            {t("close")}
           </Button>
         </Modal.Footer>
       </Modal>

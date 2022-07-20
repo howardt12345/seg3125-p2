@@ -45,5 +45,8 @@
   "invalid_cvv": "CVV is invalid",
   "card_number_placeholder": "Card number",
   "expiry_placeholder": "MM/YY",
-  "cvv_placeholder": "CVV"
+  "cvv_placeholder": "CVV",
+  "thank_you_for_ordering": "Thank you for ordering!",
+  "receipt_notice": "Your receipt has been sent to your email. You can check the link attached to the email to check your delivery progress.",
+  "close": "Close"
 }
