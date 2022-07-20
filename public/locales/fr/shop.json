@@ -1,28 +1,31 @@
 {
+  "shop": "Acheter",
+  "cart": "Panier",
   "categories": {
-    "all": "All Photos",
-    "abstract": "Abstract",
+    "all": "Toutes les photos",
+    "abstract": "Abstrait",
     "architecture": "Architecture",
-    "black-and-white": "Black and White",
-    "food": "Food",
-    "landscapes": "Landscapes",
+    "black-and-white": "Noir et Blanc",
+    "food": "Nourriture",
+    "landscapes": "Paysages",
     "macro": "Macro",
     "nature": "Nature",
-    "night": "Night",
+    "night": "Nuit",
     "portraits": "Portraits",
-    "product": "Product",
+    "product": "Produit",
     "sport": "Sport",
-    "street": "Street",
-    "wedding": "Wedding"
+    "street": "Rue",
+    "wedding": "Mariage"
   },
+  "sort": "Trier",
   "sorting": {
-    "price_asc": "Price: low to high",
-    "price_desc": "Price: high to low",
-    "rating_asc": "Rating: low to high",
-    "rating_desc": "Rating: high to low",
-    "name_asc": "Name: A to Z",
-    "name_desc": "Name: Z to A",
-    "photographer_asc": "Photographer: A to Z",
-    "photographer_desc": "Photographer: Z to A"
+    "price_asc": "Prix ​​: croissant",
+    "price_desc": "Prix : décroissant",
+    "rating_asc": "Évaluation ​​: croissant",
+    "rating_desc": "Évaluation : décroissant",
+    "name_asc": "Nom : A à Z",
+    "name_desc": "Nom : Z à A",
+    "photographer_asc": "Photographe : A à Z",
+    "photographer_desc": "Photographe : Z à A"
   }
 }

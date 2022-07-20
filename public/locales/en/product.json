@@ -1,4 +1,6 @@
 {
+  "quick_add": "Quick Add",
+  "add_to_cart": "Add to Cart",
   "select-print-size": "Select Print Size...",
   "sizes": {
     "SM": "Small (10cm x 15cm)",

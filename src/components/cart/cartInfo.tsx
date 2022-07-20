@@ -1,5 +1,7 @@
 import { Cart, TAX } from "@api/cart";
+import { useTranslation } from "next-i18next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 
@@ -8,6 +10,10 @@ export const CartInfo = (props: {
   confirm?: boolean;
   submit?: any;
 }) => {
+  const router = useRouter();
+  const { locale } = router;
+  const { t } = useTranslation("cart");
+
   const { cart, confirm, submit } = props;
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
@@ -22,14 +28,14 @@ export const CartInfo = (props: {
   return (
     <Card>
       <Card.Body className="text-center">
-        <h3 className="card-title">Order Summary</h3>
+        <h3 className="card-title">{t("order_summary")}</h3>
         <div className="px-2 my-4">
           <Row>
             <Col className="text-start">
-              <strong>Subtotal:</strong>
+              <strong>{t("cart:subtotal")}</strong>
             </Col>
             <Col className="text-end">
-              {subtotal.toLocaleString("en-US", {
+              {subtotal.toLocaleString(locale, {
                 style: "currency",
                 currency: "CAD",
               })}
@@ -37,18 +43,16 @@ export const CartInfo = (props: {
           </Row>
           <Row className="pt-2">
             <Col className="text-start">
-              <strong>Shipping:</strong>
+              <strong>{t("cart:shipping")}</strong>
             </Col>
-            <Col className="text-end">Free</Col>
+            <Col className="text-end">{t("free")}</Col>
           </Row>
           <Row className="pt-2">
             <Col className="text-start">
-              <strong>{`Tax (${TAX.toLocaleString("en", {
-                style: "percent",
-              })}):`}</strong>
+              <strong>{t("cart:tax")}</strong>
             </Col>
             <Col className="text-end">
-              {tax.toLocaleString("en-US", {
+              {tax.toLocaleString(locale, {
                 style: "currency",
                 currency: "CAD",
               })}
@@ -56,10 +60,10 @@ export const CartInfo = (props: {
           </Row>
           <Row className="border-top pt-2 mt-2">
             <Col className="text-start">
-              <strong>Total:</strong>
+              <strong>{t("cart:total")}</strong>
             </Col>
             <Col className="text-end">
-              {total.toLocaleString("en-US", {
+              {total.toLocaleString(locale, {
                 style: "currency",
                 currency: "CAD",
               })}
@@ -68,8 +72,12 @@ export const CartInfo = (props: {
         </div>
         {!confirm && (
           <Link href="/checkout">
-            <a className="btn btn-outline-primary btn-block">
-              Continue to Checkout
+            <a
+              className={`btn btn-outline-primary btn-block ${
+                cart.isEmpty() ? "disabled" : ""
+              }`}
+            >
+              {t("cart:continue_to_checkout")}
             </a>
           </Link>
         )}
@@ -80,7 +88,7 @@ export const CartInfo = (props: {
             form="submit-form"
             type="submit"
           >
-            Confirm Order
+            {t("cart:confirm_order")}
           </Button>
         )}
       </Card.Body>

@@ -41,7 +41,7 @@ export default function Product({ photo }: { photo: IPhotoData }) {
               <Row>
                 <Col>
                   <h5 className="fw-normal">
-                    {photo.price.toLocaleString("en-US", {
+                    {photo.price.toLocaleString(locale, {
                       style: "currency",
                       currency: "CAD",
                     })}

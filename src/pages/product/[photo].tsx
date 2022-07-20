@@ -19,10 +19,11 @@ export const getStaticProps = async ({
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getPhotoIds();
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+  const enPaths = getPhotoIds("en");
+  const frPaths = getPhotoIds("fr");
   return {
-    paths,
+    paths: [...enPaths, ...frPaths],
     fallback: false,
   };
 };

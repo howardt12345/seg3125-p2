@@ -7,7 +7,7 @@ export const ShopHeader = ({ category }: { category: string }) => {
   return (
     <div className="shop-header">
       <Breadcrumbs category={category} />
-      <h1 className="display-2">{t(`categories.${category}`)}</h1>
+      <h1 className="display-3">{t(`categories.${category}`)}</h1>
     </div>
   );
 };

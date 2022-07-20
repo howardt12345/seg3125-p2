@@ -1,4 +1,6 @@
 {
+  "shop": "Shop",
+  "cart": "Cart",
   "categories": {
     "all": "All Photos",
     "abstract": "Abstract",
@@ -15,6 +17,7 @@
     "street": "Street",
     "wedding": "Wedding"
   },
+  "sort": "Sort",
   "sorting": {
     "price_asc": "Price: low to high",
     "price_desc": "Price: high to low",

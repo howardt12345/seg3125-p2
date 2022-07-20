@@ -100,7 +100,7 @@ export const ProductForm = ({
         </InputGroup>
 
         <Button variant="outline-primary" type="submit" className="mb-3">
-          + Add to Cart
+          + {t("add_to_cart")}
         </Button>
       </Form>
     </div>

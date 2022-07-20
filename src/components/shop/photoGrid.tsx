@@ -61,7 +61,7 @@ export const PhotoGrid = ({ photos }: { photos: IPhotoTile[] }) => {
           <Nav.Item>
             <Dropdown align="end">
               <Dropdown.Toggle variant="outline-secondary" id="sort-dropdown">
-                Sort
+                {t('sort')}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>

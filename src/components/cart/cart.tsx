@@ -1,12 +1,15 @@
-import { CartContext, ICartItem, Cart } from "@api/cart";
+import { CartContext, Cart } from "@api/cart";
 import { NavbarComponent } from "@components/Navbar";
 import { IPhotoTile } from "@lib/photo-data";
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { Card, Col, Container, Navbar, Row } from "react-bootstrap";
 import { CartInfo } from "./cartInfo";
 import { CartTile } from "./cartTile";
 
 export default function CartComponent({ photos }: { photos: IPhotoTile[] }) {
+  const { t } = useTranslation(["cart", "shop"]);
   const [cart, setCart] = useState<Cart>(new Cart());
   const { state } = useContext(CartContext);
 
@@ -18,7 +21,7 @@ export default function CartComponent({ photos }: { photos: IPhotoTile[] }) {
     <div>
       <NavbarComponent />
       <Container fluid="lg">
-        <h1 className="display-2 mt-5 pb-3 border-bottom">Cart</h1>
+        <h1 className="display-3 mt-5 pb-3 border-bottom">{t("shop:cart")}</h1>
         <Row>
           <Col md={7} className="pt-3">
             {!cart.isEmpty() ? (
@@ -32,7 +35,14 @@ export default function CartComponent({ photos }: { photos: IPhotoTile[] }) {
                   />
                 ))
             ) : (
-              <div>cart is empty</div>
+              <Row className="text-center">
+                <span>{t("cart_empty")}</span>
+                <Col className="mt-4">
+                  <Link href="/shop">
+                    <a className="btn btn-outline-primary">{t("shop:shop")}</a>
+                  </Link>
+                </Col>
+              </Row>
             )}
           </Col>
           <Col md={5} className="pt-3">

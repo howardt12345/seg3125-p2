@@ -8,7 +8,7 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
     props: {
       photos,
       category: "all",
-      ...(await serverSideTranslations(locale, ["common", "shop"])),
+      ...(await serverSideTranslations(locale, ["common", "shop", "product"])),
     },
   };
 };

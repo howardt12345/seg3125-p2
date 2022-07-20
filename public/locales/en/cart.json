@@ -1,0 +1,12 @@
+{
+  "order_summary": "Order Summary",
+  "subtotal": "Subtotal",
+  "tax": "Tax (13%)",
+  "shipping": "Shipping",
+  "total": "Total",
+  "continue_to_checkout": "Continue to Checkout",
+  "confirm_order": "Confirm Order",
+  "free": "Free",
+  "delete": "Delete",
+  "cart_empty": "Your cart is empty. Why not add something?"
+}

@@ -67,7 +67,7 @@ export const getPhotoTileData = (category?: string, ids?: string[]) => {
   return photos;
 };
 
-export const getPhotoIds = () => {
+export const getPhotoIds = (locale: string) => {
   const photoPath = getPhotoPath();
 
   return fs.readdirSync(photoPath).map((fileName) => {
@@ -75,6 +75,7 @@ export const getPhotoIds = () => {
       params: {
         photo: fileName.replace(/\.mdx$/, ""),
       },
+      locale: locale,
     };
   });
 };

@@ -1,0 +1,12 @@
+{
+  "order_summary" : "Résumé de l'ordre",
+  "subtotal" : "Sous-total",
+  "tax" : "Taxe (13%)",
+  "shipping" : "Expédition",
+  "total" : "Total",
+  "continue_to_checkout" : "Continuer à payer",
+  "confirm_order" : "Confirmer l'ordre",
+  "free" : "Gratuit",
+  "delete" : "Supprimer",
+  "cart_empty": "Votre panier est vide. Pourquoi ne pas ajouter quelque chose ?"
+}

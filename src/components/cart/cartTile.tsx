@@ -4,6 +4,9 @@ import { Button, Card, Col, Form, InputGroup, Row } from "react-bootstrap";
 import Image from "next/image";
 import { IPhotoTile } from "@lib/photo-data";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const CartTile = ({
   item,
@@ -12,7 +15,10 @@ export const CartTile = ({
   item: ICartItem;
   photo: IPhotoTile | undefined;
 }) => {
-  const { t } = useTranslation("product");
+  const router = useRouter();
+  const { locale } = router;
+  const { t } = useTranslation(["product", "cart"]);
+
   const { dispatch } = useContext(CartContext);
   const [quantity, setQuantity] = useState(item.quantity);
 
@@ -29,14 +35,16 @@ export const CartTile = ({
     <Card className="mb-3">
       <Card.Body>
         <Row>
-          <Col xs={3} xl={2} className="d-flex align-content-center">
-            <Image
-              className="img-fluid"
-              src={photo?.src + "/200/200"}
-              alt={item.id}
-              width={200}
-              height={200}
-            />
+          <Col xs={3} xl={2} className="d-flex align-items-center">
+            <div className="d-flex align-items-center">
+              <Image
+                className="img-fluid"
+                src={photo?.src + "/200/200"}
+                alt={item.id}
+                width={200}
+                height={200}
+              />
+            </div>
           </Col>
           <Col className="d-flex flex-column">
             <div className="d-flex flex-row justify-content-between">
@@ -52,7 +60,8 @@ export const CartTile = ({
                   variant="danger"
                   onClick={() => dispatch({ type: "delete", payload: item })}
                 >
-                  Delete
+                  <FontAwesomeIcon icon={faTrashCan} className="me-2" />
+                  {t("cart:delete")}
                 </Button>
               </div>
             </div>
@@ -91,7 +100,7 @@ export const CartTile = ({
                   <Card.Title>
                     {item.quantity +
                       "x " +
-                      photo?.price.toLocaleString("en-US", {
+                      photo?.price.toLocaleString(locale, {
                         style: "currency",
                         currency: "CAD",
                       })}
