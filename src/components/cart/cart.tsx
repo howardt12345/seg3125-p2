@@ -37,7 +37,7 @@ export default function CartComponent({ photos }: { photos: IPhotoTile[] }) {
             ) : (
               <Row className="text-center">
                 <span>{t("cart:cart_empty")}</span>
-                <Col className="mt-4">
+                <Col className="mt-3">
                   <Link href="/shop">
                     <a className="btn btn-outline-primary">{t("shop:shop")}</a>
                   </Link>
