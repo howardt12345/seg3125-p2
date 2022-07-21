@@ -7,6 +7,7 @@ import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 export const CartTile = ({
   item,
@@ -37,13 +38,17 @@ export const CartTile = ({
         <Row>
           <Col xs={3} xl={2} className="d-flex align-items-center">
             <div className="d-flex align-items-center">
-              <Image
-                className="img-fluid"
-                src={photo?.src + "/200/200"}
-                alt={item.id}
-                width={200}
-                height={200}
-              />
+              <Link href={`/product/${photo?.id}`}>
+                <a>
+                  <Image
+                    className="img-fluid"
+                    src={photo?.src + "/200/200"}
+                    alt={item.id}
+                    width={200}
+                    height={200}
+                  />
+                </a>
+              </Link>
             </div>
           </Col>
           <Col className="d-flex flex-column">

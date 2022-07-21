@@ -15,7 +15,6 @@ export const CartButton = ({ count }: { count: number }) => {
             {count > 0 && (
               <span className="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-primary">
                 {count}
-                <span className="visually-hidden">unread messages</span>
               </span>
             )}
           </div>
