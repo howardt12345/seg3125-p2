@@ -4,6 +4,7 @@ import { NavbarComponent } from "@components/Navbar";
 import { IPhotoTile } from "@lib/photo-data";
 import { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
+// @ts-ignore
 import CreditCardInput from "react-credit-card-input";
 
 import {
