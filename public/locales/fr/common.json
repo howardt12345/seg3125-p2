@@ -1,5 +1,7 @@
 {
   "cart": "Panier",
   "language": "Language",
-  "close": "Fermer"
+  "close": "Fermer",
+  "404": "Page non trouvée",
+  "to_shop": "Retour à la boutique"
 }
