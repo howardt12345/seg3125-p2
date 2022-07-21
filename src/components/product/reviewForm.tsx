@@ -33,11 +33,14 @@ export const ReviewForm = () => {
 
   return (
     <div>
+      <h3 className="mt-2 pb-2 fw-normal border-bottom">
+        {t("product:submit_review")}
+      </h3>
       <Form
         noValidate
         validated={validated}
         onSubmit={submit}
-        className="text-center mt-2"
+        className="text-center mt-3"
       >
         <Form.Group controlId="form" className="mb-3">
           <Form.Control

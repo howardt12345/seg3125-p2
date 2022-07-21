@@ -8,6 +8,7 @@
     "LG": "Large (30cm x 40cm)"
   },
   "quantity": "Quantity",
+  "submit_review": "Submit a review",
   "review_name": "Name",
   "review_email": "Email",
   "review_message": "Message",
