@@ -11,6 +11,9 @@ import { NavbarComponent } from "../Navbar";
 import { StarRating } from "../starRating";
 import { ProductForm } from "./productForm";
 import { ReviewForm } from "./reviewForm";
+import Zoom from "react-medium-image-zoom";
+
+import 'react-medium-image-zoom/dist/styles.css';
 
 export default function Product({ photo }: { photo: IPhotoData }) {
   const router = useRouter();
@@ -28,13 +31,15 @@ export default function Product({ photo }: { photo: IPhotoData }) {
         <Container className="pt-lg-5">
           <Row className="justify-content-md-center">
             <Col lg="4">
-              <Image
-                className="img-fluid"
-                src={photo.src + "/400/500"}
-                alt={photo.name}
-                width={400}
-                height={500}
-              />
+              <Zoom>
+                <Image
+                  className="img-fluid"
+                  src={photo.src + "/800/1000"}
+                  alt={photo.name}
+                  width={400}
+                  height={500}
+                />
+              </Zoom>
             </Col>
             <Col lg="4">
               <h5 className="fw-normal">{photo.photographer}</h5>

@@ -21,6 +21,7 @@
     "react-bootstrap": "^2.4.0",
     "react-credit-card-input": "^1.1.5",
     "react-dom": "18.2.0",
+    "react-medium-image-zoom": "^4.4.3",
     "react-star-rating-component": "^1.4.1",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
