@@ -7,5 +7,14 @@
     "MD": "Moyen (20cm x 30cm)",
     "LG": "Grand (30cm x 40cm)"
   },
-  "quantity": "Quantity"
+  "quantity": "Quantity",
+  "review_name": "Nom",
+  "review_email": "Email",
+  "review_message": "Message",
+  "review_submit": "Envoyer",
+  "review_name_required": "Veuillez entrer votre nom",
+  "review_email_required": "Veuillez entrer votre email",
+  "review_message_required": "Veuillez entrer votre message",
+  "thank_you_for_review": "Merci pour votre commentaire",
+  "review_notice": "Votre commentaire sera publié après validation par un administrateur"
 }

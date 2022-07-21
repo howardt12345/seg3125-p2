@@ -10,6 +10,7 @@ import { Breadcrumbs } from "../breadcrumb";
 import { NavbarComponent } from "../Navbar";
 import { StarRating } from "../starRating";
 import { ProductForm } from "./productForm";
+import { ReviewForm } from "./reviewForm";
 
 export default function Product({ photo }: { photo: IPhotoData }) {
   const router = useRouter();
@@ -53,6 +54,11 @@ export default function Product({ photo }: { photo: IPhotoData }) {
               </Row>
               <ProductForm id={photo.id} itemPrice={photo.price} />
               <div dangerouslySetInnerHTML={{ __html: photo.description }} />
+            </Col>
+          </Row>
+          <Row className="mt-5">
+            <Col md={{ span: 8, offset: 2 }}>
+              <ReviewForm />
             </Col>
           </Row>
         </Container>
