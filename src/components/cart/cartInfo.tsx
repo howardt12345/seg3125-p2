@@ -3,7 +3,14 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  OverlayTrigger,
+  Row,
+  Tooltip,
+} from "react-bootstrap";
 
 export const CartInfo = (props: {
   cart: Cart;
@@ -24,6 +31,18 @@ export const CartInfo = (props: {
     setTax(cart.getTax());
     setTotal(cart.getTotal());
   }, [cart, props]);
+
+  const CheckoutLink = () => (
+    <Link href="/checkout">
+      <a
+        className={`btn btn-outline-primary btn-block ${
+          cart.isEmpty() ? "disabled" : ""
+        }`}
+      >
+        {t("cart:continue_to_checkout")}
+      </a>
+    </Link>
+  );
 
   return (
     <Card>
@@ -70,17 +89,23 @@ export const CartInfo = (props: {
             </Col>
           </Row>
         </div>
-        {!confirm && (
-          <Link href="/checkout">
-            <a
-              className={`btn btn-outline-primary btn-block ${
-                cart.isEmpty() ? "disabled" : ""
-              }`}
+        {!confirm &&
+          (cart.isEmpty() ? (
+            <OverlayTrigger
+              placement="bottom"
+              overlay={
+                <Tooltip id="tooltip-bottom">
+                  {t("cart:checkout_error")}
+                </Tooltip>
+              }
             >
-              {t("cart:continue_to_checkout")}
-            </a>
-          </Link>
-        )}
+              <span>
+                <CheckoutLink />
+              </span>
+            </OverlayTrigger>
+          ) : (
+            <CheckoutLink />
+          ))}
         {confirm && (
           <Button
             variant="outline-primary"

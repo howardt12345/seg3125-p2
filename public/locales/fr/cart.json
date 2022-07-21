@@ -8,5 +8,6 @@
   "confirm_order" : "Confirmer l'ordre",
   "free" : "Gratuit",
   "delete" : "Supprimer",
-  "cart_empty": "Votre panier est vide. Pourquoi ne pas ajouter quelque chose ?"
+  "cart_empty": "Votre panier est vide. Pourquoi ne pas ajouter quelque chose ?",
+  "checkout_error": "Veuillez ajouter quelque chose au panier avant de passer à la caisse."
 }

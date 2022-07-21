@@ -8,5 +8,6 @@
   "confirm_order": "Confirm Order",
   "free": "Free",
   "delete": "Delete",
-  "cart_empty": "Your cart is empty. Why not add something?"
+  "cart_empty": "Your cart is empty. Why not add something?",
+  "checkout_error": "Please add something to the cart before checking out."
 }

@@ -93,6 +93,9 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                       }}
                       required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      {t("checkout:first_name_error")}
+                    </Form.Control.Feedback>
                   </Form.Group>
                 </Col>
                 <Col md={6}>
@@ -105,6 +108,9 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                       onChange={(e) => setLastName(e.target.value)}
                       required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      {t("checkout:last_name_error")}
+                    </Form.Control.Feedback>
                   </Form.Group>
                 </Col>
               </Row>
@@ -117,6 +123,9 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  {t("checkout:email_error")}
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="formPhone" className="mb-2">
                 <Form.Label>{t("checkout:phone")}</Form.Label>
@@ -127,6 +136,9 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                   onChange={(e) => setPhone(e.target.value)}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  {t("checkout:phone_error")}
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="formAddress" className="mb-2">
                 <Form.Label>{t("checkout:address")}</Form.Label>
@@ -137,6 +149,9 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                   onChange={(e) => setAddress(e.target.value)}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  {t("checkout:address_error")}
+                </Form.Control.Feedback>
               </Form.Group>
               <Row className="mb-2">
                 <Col md={4}>
@@ -149,6 +164,9 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                       onChange={(e) => setCity(e.target.value)}
                       required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      {t("checkout:city_error")}
+                    </Form.Control.Feedback>
                   </Form.Group>
                 </Col>
                 <Col md={4}>
@@ -161,6 +179,9 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                       onChange={(e) => setProvince(e.target.value)}
                       required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      {t("checkout:province_state_error")}
+                    </Form.Control.Feedback>
                   </Form.Group>
                 </Col>
                 <Col md={4}>
@@ -173,6 +194,9 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                       onChange={(e) => setPostalCode(e.target.value)}
                       required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      {t("checkout:zip_postal_error")}
+                    </Form.Control.Feedback>
                   </Form.Group>
                 </Col>
               </Row>
@@ -216,6 +240,9 @@ export default function Checkout({ photos }: { photos: IPhotoTile[] }) {
                       onChange={(e) => setCardName(e.target.value)}
                       required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      {t("checkout:card_name_required")}
+                    </Form.Control.Feedback>
                   </Form.Group>
                 </Col>
               </Row>
