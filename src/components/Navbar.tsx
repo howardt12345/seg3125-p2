@@ -7,7 +7,6 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import { CartButton } from "./cart/cartButton";
 
 export const NavbarComponent = () => {
-  const { t } = useTranslation(["common", "shop"]);
   const { state } = useContext(CartContext);
   const router = useRouter();
 

@@ -1,10 +1,8 @@
 import { NavbarComponent } from "@components/Navbar";
 import { IPhotoTile } from "@lib/photo-data";
-import { useRouter } from "next/router";
 import { Col, Container, Row } from "react-bootstrap";
 import { CategoryList } from "./categoryList";
 import { PhotoGrid } from "./photoGrid";
-import { PhotoTile } from "./PhotoTile";
 import { ShopHeader } from "./ShopHeader";
 
 export default function Shop({
@@ -14,10 +12,6 @@ export default function Shop({
   photos: IPhotoTile[];
   category: string;
 }) {
-  const router = useRouter();
-  const { asPath, locale } = router;
-  const { q, sort } = router.query;
-
   return (
     <>
       <NavbarComponent />

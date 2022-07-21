@@ -1,4 +1,4 @@
-import { Cart, TAX } from "@api/cart";
+import { Cart } from "@api/cart";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";

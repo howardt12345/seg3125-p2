@@ -1,11 +1,7 @@
-import { CartContext, ICartItem } from "@api/cart";
 import { IPhotoData } from "@lib/photo-data";
-import { Size } from "@lib/product-consts";
-import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
-import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { Breadcrumbs } from "../breadcrumb";
 import { NavbarComponent } from "../Navbar";
 import { StarRating } from "../starRating";
@@ -13,13 +9,11 @@ import { ProductForm } from "./productForm";
 import { ReviewForm } from "./reviewForm";
 import Zoom from "react-medium-image-zoom";
 
-import 'react-medium-image-zoom/dist/styles.css';
+import "react-medium-image-zoom/dist/styles.css";
 
 export default function Product({ photo }: { photo: IPhotoData }) {
   const router = useRouter();
-  const { asPath, locale } = router;
-  const { q, sort } = router.query;
-
+  const { locale } = router;
   return (
     <div>
       <NavbarComponent />
