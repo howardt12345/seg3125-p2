@@ -19,7 +19,7 @@ export default function Shop({
         <ShopHeader category={category} />
         <Row>
           <Col md={3} className="border-top">
-            <CategoryList selected={category} photos={photos} />
+            <CategoryList selected={category} />
           </Col>
           <Col className="ps-0 border-start">
             <PhotoGrid photos={photos} />
