@@ -1,5 +1,6 @@
 {
   "quick_add": "Quick Add",
+  "quick_add_description": "Quickly add a product to your cart by selecting a size",
   "add_to_cart": "Add to Cart",
   "select-print-size": "Select Print Size...",
   "sizes": {

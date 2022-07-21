@@ -92,9 +92,9 @@ export const CartInfo = (props: {
         {!confirm &&
           (cart.isEmpty() ? (
             <OverlayTrigger
-              placement="bottom"
+              placement="top"
               overlay={
-                <Tooltip id="tooltip-bottom">
+                <Tooltip id="tooltip-top">
                   {t("cart:checkout_error")}
                 </Tooltip>
               }

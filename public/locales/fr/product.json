@@ -1,5 +1,6 @@
 {
   "quick_add": "Ajout rapide",
+  "quick_add_description": "Ajoutez rapidement un produit à votre panier en sélectionnant une taille",
   "add_to_cart": "Ajouter au panier",
   "select-print-size": "Sélectionnez la taille d'impression...",
   "sizes": {

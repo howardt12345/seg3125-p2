@@ -5,7 +5,15 @@ import { Size } from "@lib/product-consts";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useContext } from "react";
-import { Card, Col, Dropdown, DropdownButton, Row } from "react-bootstrap";
+import {
+  Card,
+  Col,
+  Dropdown,
+  DropdownButton,
+  OverlayTrigger,
+  Row,
+  Tooltip,
+} from "react-bootstrap";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
@@ -51,25 +59,39 @@ export const PhotoTile = ({ photo }: { photo: IPhotoTile }) => {
           </a>
         </Link>
         <div className="mt-3 d-flex justify-content-end">
-          <Dropdown align="end">
-            <Dropdown.Toggle variant="outline-primary" id="quick-add-dropdown">
-              <FontAwesomeIcon icon={faCartPlus} className="me-2" />
-              {t("quick_add")}
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              {Object.keys(Size).map((size) => {
-                return (
-                  <Dropdown.Item
-                    key={size}
-                    value={size}
-                    onClick={() => quickAdd(Size[size as keyof typeof Size])}
-                  >
-                    {t(`sizes.${size}`)}
-                  </Dropdown.Item>
-                );
-              })}
-            </Dropdown.Menu>
-          </Dropdown>
+          <OverlayTrigger
+            placement="left"
+            overlay={
+              <Tooltip id="tooltip-left">{t("quick_add_description")}</Tooltip>
+            }
+          >
+            <span>
+              <Dropdown align="end">
+                <Dropdown.Toggle
+                  variant="outline-primary"
+                  id="quick-add-dropdown"
+                >
+                  <FontAwesomeIcon icon={faCartPlus} className="me-2" />
+                  {t("quick_add")}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  {Object.keys(Size).map((size) => {
+                    return (
+                      <Dropdown.Item
+                        key={size}
+                        value={size}
+                        onClick={() =>
+                          quickAdd(Size[size as keyof typeof Size])
+                        }
+                      >
+                        {t(`sizes.${size}`)}
+                      </Dropdown.Item>
+                    );
+                  })}
+                </Dropdown.Menu>
+              </Dropdown>
+            </span>
+          </OverlayTrigger>
         </div>
       </Card.Body>
     </Card>
